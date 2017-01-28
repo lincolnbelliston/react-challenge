@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
+import MovieContainer from './MovieContainer.jsx';
+import Pagination from './Pagination.jsx';
 
 class App extends Component {
   render() {
     return (
-      <h1>Hello React :)</h1>
+      <div>
+        <MovieContainer />
+        <Pagination />
+      </div>
     );
   }
 }
-
 
 export default App;
