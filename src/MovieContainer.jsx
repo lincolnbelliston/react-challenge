@@ -8,7 +8,7 @@ var MovieContainer = React.createClass({
     var movies = this.props.movieData.results;
     for (var i=0; i < movies.length; i++) {
       movieViews.push(
-        <MovieView movie={movies[i]} key={i} />
+        <MovieView movie={movies[i]} id={movies[i].id} key={i} />
       )
     }
 

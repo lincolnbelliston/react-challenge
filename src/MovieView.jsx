@@ -8,6 +8,12 @@ var MovieView = React.createClass({
     }
   },
 
+  componentWillReceiveProps: function(){
+    this.setState({
+      open: false
+    })
+  },
+
   render: function() {
     var className = "movieView";
     var basePosterURL = "http://image.tmdb.org/t/p/w92/";
