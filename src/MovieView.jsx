@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
 import {Panel, Grid, Row, Col, Image, Thumbnail, Button} from 'react-bootstrap';
+import ReviewModal from './ReviewModal.jsx';
 
 var MovieView = React.createClass({
-
-  showReviews() {
-    console.log("reviews");
-  },
 
   render: function() {
     var className = "movieView";
@@ -27,14 +24,12 @@ var MovieView = React.createClass({
                   <p>Release date: {this.props.movie.release_date}</p>
                   <p>Average Rating: {this.props.movie.vote_average}</p>
                   <p>Overview: {this.props.movie.overview}</p>
-                  <Button bsStyle="link"
-                    onClick={ () => this.showReviews() }>Show reviews</Button>
+                  <ReviewModal movie={this.props.movie} />
                 </Col>
               </Panel>
             </Col>
           </Row>
         </Grid>
-
       </div>
     );
   }

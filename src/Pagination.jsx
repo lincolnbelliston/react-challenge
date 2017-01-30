@@ -42,7 +42,6 @@ var PaginationModule = React.createClass({
 
 
   componentWillReceiveProps: function(nextProps){
-    console.log(nextProps.page);
     this.setState({
       activePage: nextProps.page
     })
