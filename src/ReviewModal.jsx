@@ -13,12 +13,7 @@ var ReviewModal = React.createClass({
 
   componentWillMount() {
 
-    var baseReviewURL = "https://api.themoviedb.org/3/movie/";
-    var suffixURL = "/reviews?api_key=306bd1f9dda87b11475c98f9d47e3862&language=en-US&page=1";
-    var reviewURL = baseReviewURL + this.props.movie.id + suffixURL;
-    var updateState = this.updateState;
 
-    moviedb.request(function(reviewData){updateState({reviews: reviewData.results})},reviewURL)
   },
 
   updateState(newState){
@@ -27,6 +22,13 @@ var ReviewModal = React.createClass({
 
   open() {
       this.setState({ showModal: true });
+
+      var baseReviewURL = "https://api.themoviedb.org/3/movie/";
+      var suffixURL = "/reviews?api_key=306bd1f9dda87b11475c98f9d47e3862&language=en-US&page=1";
+      var reviewURL = baseReviewURL + this.props.movie.id + suffixURL;
+      var updateState = this.updateState;
+
+      moviedb.request(function(reviewData){updateState({reviews: reviewData.results})},reviewURL)
     },
 
   close() {

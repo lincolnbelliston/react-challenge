@@ -30,6 +30,11 @@ var App = React.createClass({
         </Row>
         <Row>
           <Col sm={12}>
+            <p>click on a title for details</p>
+          </Col>
+        </Row>
+        <Row>
+          <Col sm={12}>
             <MovieContainer movies={this.state.movies} page={this.props.page} />
           </Col>
         </Row>
