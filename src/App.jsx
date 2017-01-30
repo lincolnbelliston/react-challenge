@@ -35,7 +35,7 @@ var App = React.createClass({
         </Row>
         <Row>
           <Col sm={12} className='text-center'>
-            <PaginationModule movies={this.state.movies} totalPages={this.state.totalPages}/>
+            <PaginationModule movies={this.state.movies} totalPages={this.state.totalPages} page={this.props.page} />
           </Col>
         </Row>
       </Grid>

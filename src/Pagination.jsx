@@ -20,8 +20,15 @@ var PaginationModule = React.createClass({
     window.scrollTo(0,0);
   },
 
+  componentWillReceiveProps: function(){
+    this.setState({
+      activePage: 1
+    })
+  },
+
   render: function() {
     var className = "pagination";
+
     return (
       <Pagination
         prev
