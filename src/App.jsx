@@ -1,31 +1,78 @@
 import React, {Component} from 'react';
 import MovieContainer from './MovieContainer.jsx';
 import PaginationModule from './Pagination.jsx';
+import FilterNavbar from './FilterNavbar.jsx';
 import {PageHeader, Grid, Row, Col} from 'react-bootstrap';
+var moviedb = require('./moviedb');
 
-class App extends Component {
-  render() {
+var movies;
+
+var App = React.createClass({
+  getInitialState() {
+    return {
+      movies: this.props.movies,
+      totalPages: this.props.totalPages
+    }
+  },
+
+  render: function(){
     return (
       <Grid>
         <Row>
-          <Col sm={6}>
+          <Col sm={12}>
             <PageHeader>Now Playing <small>(built w/ React)</small></PageHeader>
           </Col>
-
         </Row>
         <Row>
           <Col sm={12}>
-            <MovieContainer movieData={this.props.movieData}/>
+            <FilterNavbar movies={this.state.movies} totalPages={this.state.totalPages}/>
+          </Col>
+        </Row>
+        <Row>
+          <Col sm={12}>
+            <MovieContainer movies={this.state.movies} page={this.props.page} />
           </Col>
         </Row>
         <Row>
           <Col sm={12} className='text-center'>
-            <PaginationModule movieData={this.props.movieData}/>
+            <PaginationModule movies={this.state.movies} totalPages={this.state.totalPages}/>
           </Col>
         </Row>
       </Grid>
     );
+  },
+
+  getMovies(page, callback) {
+    var getMovies = this.getMovies;
+    var totalPages = this.state.totalPages;
+    var setState = this.setState;
+
+    page = page + 1
+    if (page <= totalPages){
+      moviedb.page = page;
+      moviedb.request(function(nextPage){
+        movies = movies.concat(nextPage.results);
+        if (page == totalPages){
+          callback();
+        }
+        getMovies(page, callback);
+      });
+    }
+  },
+
+  updateState() {
+    this.setState({
+      movies: movies
+    })
+  },
+
+  componentDidMount() {
+    movies = this.state.movies;
+    var totalPages = this.state.totalPages;
+
+    this.getMovies(1, this.updateState);
+
   }
-}
+})
 
 export default App;

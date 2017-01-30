@@ -14,7 +14,7 @@ var movieData = {
       if (apiRequest.readyState == XMLHttpRequest.DONE ) {
          if (apiRequest.status == 200) {
            this.movies = apiRequest.responseText;
-           callback(this.movies);
+           callback(JSON.parse(this.movies));
          } else {
              console.log('Error ',apiRequest.status);
          }

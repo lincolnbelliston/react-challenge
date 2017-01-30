@@ -5,10 +5,15 @@ import {PanelGroup} from 'react-bootstrap';
 var MovieContainer = React.createClass({
   render: function() {
     var movieViews = [];
-    var movies = this.props.movieData.results;
-    for (var i=0; i < movies.length; i++) {
+    var movies = this.props.movies;
+    var page = this.props.page;
+    for (var i=0; i < 20; i++) {
+      var index = 20 * parseInt(page - 1) + parseInt(i);
+      if(!movies[index]){
+        break;
+      }
       movieViews.push(
-        <MovieView movie={movies[i]} id={movies[i].id} key={i} />
+        <MovieView movie={movies[index]} id={movies[index].id} key={index} />
       )
     }
 

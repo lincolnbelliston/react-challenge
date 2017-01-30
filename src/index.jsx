@@ -7,10 +7,15 @@ require("../styles/application.scss");
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
-//import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+
+var moviesMaster = [];
 
 // initial http request to moviedb
 var moviedb = require('./moviedb');
 moviedb.request(function(movieData){
-  ReactDOM.render(<App movieData={JSON.parse(movieData)} />, document.getElementById('react-root'));
+  var movies = movieData.results;
+
+  ReactDOM.render(<App movies={movies} page={1} totalPages={movieData.total_pages}/>, document.getElementById('react-root'));
+
+
 });

@@ -16,10 +16,7 @@ var PaginationModule = React.createClass({
       activePage: eventKey
     });
 
-    moviedb.page = eventKey;
-    moviedb.request(function(movieData){
-      ReactDOM.render(<App movieData={JSON.parse(movieData)} />, document.getElementById('react-root'));
-    });
+    ReactDOM.render(<App movies={this.props.movies} page={eventKey}/>, document.getElementById('react-root'));
     window.scrollTo(0,0);
   },
 
@@ -33,7 +30,7 @@ var PaginationModule = React.createClass({
         last
         ellipsis
         boundaryLinks
-        items={this.props.movieData.total_pages}
+        items={this.props.totalPages}
         maxButtons={5}
         activePage={this.state.activePage}
         onSelect={this.handleSelect}
