@@ -1,17 +1,10 @@
 import React, {Component} from 'react';
-import {Panel, Grid, Row, Col, Image, Thumbnail} from 'react-bootstrap';
+import {Panel, Grid, Row, Col, Image, Thumbnail, Button} from 'react-bootstrap';
 
 var MovieView = React.createClass({
-  getInitialState: function(){
-    return {
-      open: false
-    }
-  },
 
-  componentWillReceiveProps: function(){
-    this.setState({
-      open: false
-    })
+  showReviews() {
+    console.log("reviews");
   },
 
   render: function() {
@@ -24,12 +17,7 @@ var MovieView = React.createClass({
         <Grid>
           <Row>
             <Col sm={12}>
-              <Panel header={this.props.movie.title}
-                onClick={ () => this.setState({
-                    open: !this.state.open
-                  })
-                }
-                collapsible expanded={this.state.open}>
+              <Panel header={this.props.movie.title} collapsible>
                 <Col sm={3}>
                 <Thumbnail src={basePosterURL + this.props.movie.poster_path}
                   href={originalPosterURL + this.props.movie.poster_path}
@@ -39,6 +27,8 @@ var MovieView = React.createClass({
                   <p>Release date: {this.props.movie.release_date}</p>
                   <p>Average Rating: {this.props.movie.vote_average}</p>
                   <p>Overview: {this.props.movie.overview}</p>
+                  <Button bsStyle="link"
+                    onClick={ () => this.showReviews() }>Show reviews</Button>
                 </Col>
               </Panel>
             </Col>
