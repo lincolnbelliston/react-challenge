@@ -75,6 +75,12 @@ var App = React.createClass({
     movies = this.state.movies;
     var totalPages = this.state.totalPages;
 
+    /* after first page of movies renders, get the rest of the movies.
+    // I understand this isn't really scalable, but I thought the feature of
+    // being able to sort the movies alphabetically would be nice, and the only
+    // way I could see to do that was to download every page of movies.
+    // In any case, it goes on in the background so it won't detract from UX.
+    */
     this.getMovies(1, this.updateState);
 
   }

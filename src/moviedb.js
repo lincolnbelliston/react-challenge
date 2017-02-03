@@ -3,7 +3,10 @@ var movieData = {
   "api_key": "306bd1f9dda87b11475c98f9d47e3862",
   "page": "1",
   "url": function(){return this.baseURL + this.api_key + "&page=" + this.page},
-  
+
+  /* Given more time, I would make this a little more generalized. As a quick
+  // patch, I added the "altURL" parameter to hack together something that
+  // would allow me to get reviews, a feature I added last. */
   "request": function(callback, altURL){
     var url = "";
     if(altURL) {
