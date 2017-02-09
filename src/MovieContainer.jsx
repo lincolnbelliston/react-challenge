@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
+import React from 'react';
 import MovieView from './MovieView.jsx';
-import {PanelGroup} from 'react-bootstrap';
 
 var MovieContainer = React.createClass({
   render: function() {
